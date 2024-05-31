@@ -14,6 +14,7 @@
 		A346E7E22BD64DD2000A2F9F /* meme1_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346E7E12BD64DD2000A2F9F /* meme1_0Tests.swift */; };
 		A346E7EC2BD64DD2000A2F9F /* meme1_0UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346E7EB2BD64DD2000A2F9F /* meme1_0UITests.swift */; };
 		A346E7EE2BD64DD2000A2F9F /* meme1_0UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346E7ED2BD64DD2000A2F9F /* meme1_0UITestsLaunchTests.swift */; };
+		A346E7FB2BD7BCA3000A2F9F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A346E7FA2BD7BCA3000A2F9F /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		A346E7E72BD64DD2000A2F9F /* meme1.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meme1.0UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A346E7EB2BD64DD2000A2F9F /* meme1_0UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meme1_0UITests.swift; sourceTree = "<group>"; };
 		A346E7ED2BD64DD2000A2F9F /* meme1_0UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meme1_0UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A346E7FA2BD7BCA3000A2F9F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				A346E7CF2BD64DD1000A2F9F /* meme1_0App.swift */,
 				A346E7D12BD64DD1000A2F9F /* ContentView.swift */,
+				A346E7FA2BD7BCA3000A2F9F /* Media.xcassets */,
 				A346E7D32BD64DD2000A2F9F /* Assets.xcassets */,
 				A346E7D52BD64DD2000A2F9F /* meme1_0.entitlements */,
 				A346E7D62BD64DD2000A2F9F /* Preview Content */,
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A346E7D82BD64DD2000A2F9F /* Preview Assets.xcassets in Resources */,
+				A346E7FB2BD7BCA3000A2F9F /* Media.xcassets in Resources */,
 				A346E7D42BD64DD2000A2F9F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
