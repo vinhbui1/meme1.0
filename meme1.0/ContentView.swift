@@ -8,25 +8,19 @@
 import SwiftUI
 import UIKit
 
+
+
 extension View {
-    func snapshot() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        let view = controller.view
-        
-        let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: .zero, size: targetSize)
-        view?.backgroundColor = .clear
-        
-        let renderer = UIGraphicsImageRenderer(bounds: view!.bounds)
-        return renderer.image { _ in
-            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)}
-        
-//        return  renderer.image { ctx in
-//            view!.layer.render(in: ctx.cgContext)
-//
-//        }
+  
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
     }
-    
 }
 
 func renderImage() {
@@ -46,11 +40,16 @@ struct ContentView: View {
     @State private var capturedImage: UIImage?
     @State  var isShowingImagePicker = false
     @State  var text = ""
+    @State var hide = false
 
     var body: some View {
        // ZStack {
             VStack{
-                AppBar(state: $selectedImage,viewController: UIApplication.shared.windows.first?.rootViewController ?? UIViewController())
+                if self.hide {
+                    AppBar(state: $selectedImage,viewController: UIApplication.shared.windows.first?.rootViewController ?? UIViewController()).hidden()
+                           } else {
+                               AppBar(state: $selectedImage,viewController: UIApplication.shared.windows.first?.rootViewController ?? UIViewController())
+                           }
                 if selectedImage != nil {
                     VStack {
                         Spacer()
@@ -63,19 +62,9 @@ struct ContentView: View {
                     // Export Button
                           
                               Button("Capture & Share") {
-                             var image =     EditedImageView(image: $selectedImage, textTop: $text).snapshot()
-//                                  let swiftUIViewImage = VStack {
-//                                      EditedImageView(image: $selectedImage, textTop: $text)
-//
-//                                  }.snapshot()
-//
-//                                  // Convert the SwiftUI snapshot to a UIImage
-                                  let imageToShare = UIImage(cgImage: image.cgImage!)
-
-                              let activityViewController = UIActivityViewController(activityItems: [ imageToShare], applicationActivities: nil)
-                              UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
-
-                                      //     self.renderImage()
+                                 self.hide.toggle()
+                                  self.renderImage()
+                                 // hide = false
                                        }
                           }
                  else {
@@ -93,32 +82,17 @@ struct ContentView: View {
 
  
     func renderImage() {
+        print(hide)
+        print("hide test")
+
         let renderer = UIGraphicsImageRenderer(bounds: UIScreen.main.bounds)
         let capturedImage = renderer.image { ctx in
             UIApplication.shared.windows.first?.rootViewController?.view.layer.render(in: ctx.cgContext)
         }
-
         let activityViewController = UIActivityViewController(activityItems: [ capturedImage], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
     }
     
-    func captureAndShareView(image: UIImage?,
-     textTop: String) {
-            // Capture the SwiftUI view
-//            let swiftUIViewImage = VStack {
-//                EditedImageView(image: $image
-//                                , textTop: $textTop)
-//            }.snapshot()
-//
-//            // Convert the SwiftUI snapshot to a UIImage
-//            let imageToShare = UIImage(cgImage: swiftUIViewImage.cgImage!)
-//
-//        let activityViewController = UIActivityViewController(activityItems: [ imageToShare], applicationActivities: nil)
-//        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
-
-            
-        
-        }
 }
 
 
